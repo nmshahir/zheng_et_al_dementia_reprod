@@ -122,4 +122,10 @@ EnhancedVolcano(tT2,
 
 sig_tT2 <- tT2  |>
   filter(adj.P.Val < 0.05) |>
-  filter(abs(logFC) > 1)
+  filter(abs(logFC) > 1) |>
+  mutate(direction = ifelse(logFC > 0, "up", "down"))
+
+sig_tT2_up <- sig_tT2 |>
+  filter(logFC > 0)
+
+sig_tT2
